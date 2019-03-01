@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMainButton1Clicked(View view) {
         if(ba == null) {
-            Log.e(TAG,"Bluetooth not supported on this device");
-            makeToast("Bluetooth not supported on this device!");
+            String log = "Bluetooth not supported on this device";
+            Log.e(TAG,log);
+            makeToast(log);
             this.finishAffinity();
         }
 
@@ -38,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_ENABLE_BT) {
             if(resultCode == RESULT_OK) {
-                makeToast("Bluetooth enabled");
+                String log = "Bluetooth enabled";
+                Log.d(TAG,log);
+                makeToast(log);
             } else if(resultCode == RESULT_CANCELED) {
                 Log.d(TAG,"Bluetooth activation canceled");
                 this.finishAffinity();
