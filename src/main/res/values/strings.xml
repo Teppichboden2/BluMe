@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BluMe</string>
+    <string name="main_act">Dennis Vinke und so weiter...</string>
+    <string name="mainButton1">Funktionalitätentogglebutton</string>
 </resources>
