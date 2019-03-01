@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMainButton1Clicked(View view) {
         if(ba == null) {
+            Log.e(TAG,"Bluetooth not supported on this device");
             makeToast("Bluetooth not supported on this device!");
             this.finishAffinity();
         }
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK) {
                 makeToast("Bluetooth enabled");
             } else if(resultCode == RESULT_CANCELED) {
+                Log.d(TAG,"Bluetooth activation canceled");
                 this.finishAffinity();
             }
         }
