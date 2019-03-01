@@ -10,30 +10,47 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BluetoothAdapter ba;
+    private BluetoothAdapter blAdapter;
     private int REQUEST_ENABLE_BT = 42;
-    private String TAG = "MainActivity";
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ba = BluetoothAdapter.getDefaultAdapter();
+        blAdapter = BluetoothAdapter.getDefaultAdapter();
+        enableBluetooth();
     }
 
-    public void onMainButton1Clicked(View view) {
-        if(ba == null) {
+    public void enableBluetooth() {
+        if(blAdapter == null) {
             String log = "Bluetooth not supported on this device";
             Log.e(TAG,log);
             makeToast(log);
             this.finishAffinity();
         }
 
-        if(!ba.isEnabled()) {
+        if(!blAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent,REQUEST_ENABLE_BT);
         }
+    }
+
+    private void makeToast(String msg) {
+        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
+    }
+
+    public void onDiscoverableButtonClicked(View view) {
+        Log.d(TAG, "Making the device discoverable for 300 seconds.");
+
+        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+        startActivity(discoverableIntent);
+    }
+
+    public void onExitButtonClicked(View view) {
+        this.finishAffinity();
     }
 
     @Override
@@ -51,8 +68,4 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
     }
 
-
-    private void makeToast(String msg) {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
-    }
 }
