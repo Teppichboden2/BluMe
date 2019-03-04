@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">BluMe</string>
-    <string name="btnDiscoverable">Discoverable</string>
     <string name="btnExit">Exit</string>
 </resources>

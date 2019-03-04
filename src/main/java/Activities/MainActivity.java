@@ -1,12 +1,16 @@
 package com.example.blume;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.Set;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
         blAdapter = BluetoothAdapter.getDefaultAdapter();
         enableBluetooth();
+
+        Log.d(TAG, UUID.randomUUID().toString());
+
     }
 
-    public void enableBluetooth() {
+    private void enableBluetooth() {
         if(blAdapter == null) {
             String log = "Bluetooth not supported on this device";
             Log.e(TAG,log);
@@ -39,14 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeToast(String msg) {
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
-    }
-
-    public void onDiscoverableButtonClicked(View view) {
-        Log.d(TAG, "Making the device discoverable for 300 seconds.");
-
-        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-        startActivity(discoverableIntent);
     }
 
     public void onExitButtonClicked(View view) {
