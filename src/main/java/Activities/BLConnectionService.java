@@ -17,7 +17,7 @@ import java.util.UUID;
 public class BLConnectionService {
 
     private static final String TAG = "BLConnectionService";
-    private static final String NAME = "BLUME";
+    private static final String APPNAME = "BLUME";
     private static final String MY_UUID = "e5f7d62d-1941-40d8-80f5-dbc084598d2e";
 
     private final BluetoothAdapter mBluetoothAdapter;
@@ -34,16 +34,12 @@ public class BLConnectionService {
     public BLConnectionService(Context context) {
         this.mContext = context;
         this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        this.start();
     }
-    public void connected(BluetoothSocket blSocket, BluetoothServerSocket blss) {
+    public void connected(BluetoothSocket blSocket, BluetoothDevice bld) {
         Log.d(TAG,"connected: Starting");
-        mConnectThread = new ConnectedThread(blss);
+        mConnectedThread = new ConnectedThread(blSocket);
         mConnectedThread.start();
-    }
-    public void write(byte[] out) {
-        ConnectedThread r;
-        Log.d(TAG,"Write called.");
-        mConnectedThread.write(out);
     }
 
     private class AcceptThread extends Thread {
@@ -53,7 +49,7 @@ public class BLConnectionService {
             BluetoothServerSocket temp = null;
 
             try {
-                temp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord(NAME, UUID.fromString(MY_UUID));
+                temp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord(APPNAME, UUID.fromString(MY_UUID));
                 Log.d(TAG,"Setting up Server using: "+MY_UUID);
             } catch (IOException e) {
                 Log.e(TAG,"Exception in AcceptThread(): "+e.getMessage());
@@ -76,7 +72,7 @@ public class BLConnectionService {
             }
 
             if(mSocket != null) {
-                connected(mSocket, mBluetoothServerSocket);
+                connected(mSocket, mBluetoothDevice);
             }
 
         }
@@ -112,6 +108,7 @@ public class BLConnectionService {
 
             bls = temp;
             mBluetoothAdapter.cancelDiscovery();
+
             try {
                 bls.connect();
                 Log.d(TAG,"ConnectThread connected");
@@ -207,10 +204,16 @@ public class BLConnectionService {
             mAcceptThread.start();
         }
     }
-    public void startClient(BluetoothDevice device, UUID uuid) {
+    public void startClient(BluetoothDevice device, String uuid) {
         Log.d(TAG,"Client started");
         mProgressDialog = ProgressDialog.show(mContext,"Connecting Bluetooth","Please wait...",true);
-        mConnectThread = new ConnectThread(device, uuid);
+        mConnectThread = new ConnectThread(device, UUID.fromString(uuid));
         mConnectThread.start();
+    }
+
+    public void write(byte[] out) {
+        ConnectedThread r;
+        Log.d(TAG,"Write called.");
+        mConnectedThread.write(out);
     }
 }
