@@ -21,8 +21,8 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
     public DeviceListAdapter(Context context, int tvResourceId, ArrayList<BluetoothDevice> devices) {
         super(context, tvResourceId, devices);
         this.mDevices = devices;
-        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mViewResourceID = tvResourceId;
+        this.mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.mViewResourceID = tvResourceId;
     }
 
     public View getView(int pos, View convertView, ViewGroup parent) {

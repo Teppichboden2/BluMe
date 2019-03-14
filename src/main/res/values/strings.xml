@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">BluMe</string>
     <string name="btnExit">Exit</string>
+    <string name="btnServer">Server</string>
+    <string name="btnClient">Client</string>
+    <string name="btnUtil">Util</string>
 </resources>
