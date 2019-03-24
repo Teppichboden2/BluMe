@@ -13,12 +13,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Set;
 
-import Bluetooth.BluetoothConnectionService;
-import Activities.DeviceListAdapter;
+import activities.MeasureActivity;
+import bluetooth.BluetoothConnectionService;
+import activities.DeviceListAdapter;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -165,9 +165,13 @@ public class MainActivity extends AppCompatActivity {
         this.finishAffinity();
     }
 
-    public void onSendButtonClicked(View view) {
-        String msg = "Dennis Stinke Vinke";
-        mBluetoothConnection.write(msg.getBytes(Charset.defaultCharset()));
+    public void onMeasureActivityButtonClicked(View view) {
+        // String msg = "Dennis Stinke Vinke";
+        // mBluetoothConnection.write(msg.getBytes(Charset.defaultCharset()));
+
+        Log.d(TAG,"onMeasureActivityButtonClicked");
+        Intent intent = new Intent(this, MeasureActivity.class);
+        startActivity(intent);
     }
 
     @Override

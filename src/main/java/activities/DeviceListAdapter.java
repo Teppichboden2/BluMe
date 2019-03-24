@@ -1,4 +1,4 @@
-package Activities;
+package activities;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;

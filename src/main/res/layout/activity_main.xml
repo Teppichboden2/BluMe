@@ -32,11 +32,11 @@
             android:onClick="onClientButtonClicked" />
 
         <Button
-            android:id="@+id/btnUtil"
+            android:id="@+id/btnMeasureActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnUtil"
-            android:onClick="onSendButtonClicked" />
+            android:text="@string/btnMeasureActivity"
+            android:onClick="onMeasureActivityButtonClicked" />
 
         <Button
             android:id="@+id/btnExit"

@@ -1,4 +1,4 @@
-package Bluetooth;
+package bluetooth;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;

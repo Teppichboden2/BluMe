@@ -3,5 +3,6 @@
     <string name="btnExit">Exit</string>
     <string name="btnServer">Server</string>
     <string name="btnClient">Client</string>
-    <string name="btnUtil">Util</string>
+    <string name="btnMeasureActivity">Util</string>
+    <string name="btnMeasure">Tap to measure</string>
 </resources>
