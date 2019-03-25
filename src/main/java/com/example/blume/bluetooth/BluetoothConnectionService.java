@@ -27,10 +27,6 @@ public class BluetoothConnectionService {
     private ClientThread mClientThread;
     private ConnectionThread mConnectionThread;
 
-    //private BluetoothDevice mBluetoothDevice;
-    //private UUID deviceUUID;
-    private ProgressDialog mProgressDialog;
-
     public BluetoothConnectionService(Context context) {
         this.mContext = context;
         this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();

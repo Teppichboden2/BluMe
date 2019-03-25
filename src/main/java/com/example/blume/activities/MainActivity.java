@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import com.example.blume.activities.MeasureActivity;
+import com.example.blume.activities.ServerActivity;
 import com.example.blume.bluetooth.BluetoothConnectionService;
 import com.example.blume.activities.DeviceListAdapter;
 
@@ -133,12 +134,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onServerButtonClicked(View view) {
-        Log.d(TAG,"On server button clicked");
-        tryToEnableBluetooth();
+        /*tryToEnableBluetooth();
 
         if(mBluetoothAdapter.isEnabled()) {
             mBluetoothConnection.startServer();
-        }
+        }*/
+
+        Log.d(TAG,"On ServerButton clicked");
+        Intent intent = new Intent(this, ServerActivity.class);
+        startActivity(intent);
     }
 
     public void onClientButtonClicked(View view) {
@@ -159,12 +163,6 @@ public class MainActivity extends AppCompatActivity {
         this.startConnection();
     }
 
-    public void onExitButtonClicked(View view) {
-        Log.d(TAG,"On exit button clicked");
-        mBluetoothConnection.cancel();
-        this.finishAffinity();
-    }
-
     public void onMeasureActivityButtonClicked(View view) {
         // String msg = "Dennis Stinke Vinke";
         // mBluetoothConnection.write(msg.getBytes(Charset.defaultCharset()));
@@ -172,6 +170,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"onMeasureActivityButtonClicked");
         Intent intent = new Intent(this, MeasureActivity.class);
         startActivity(intent);
+    }
+
+    public void onExitButtonClicked(View view) {
+        Log.d(TAG,"On exit button clicked");
+        mBluetoothConnection.cancel();
+        this.finishAffinity();
     }
 
     @Override
