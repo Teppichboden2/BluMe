@@ -1,4 +1,4 @@
-package activities;
+package com.example.blume.activities;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;

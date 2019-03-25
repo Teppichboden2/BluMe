@@ -1,4 +1,4 @@
-package bluetooth;
+package com.example.blume.bluetooth;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -160,8 +160,6 @@ public class BluetoothConnectionService {
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
 
-            //mProgressDialog.dismiss();
-
             try {
                 tmpIn = mmSocket.getInputStream();
                 tmpOut = mmSocket.getOutputStream();
@@ -200,7 +198,7 @@ public class BluetoothConnectionService {
 
         public void write(byte[] bytes) {
             String text = new String(bytes, Charset.defaultCharset());
-            Log.d(TAG,"Writing to Ouputstream: "+text);
+            Log.d(TAG,"Writing to Outputstream: "+text);
             try {
                 synchronized(this){mmOutput.write(bytes);}
             } catch (IOException e) {
@@ -225,13 +223,12 @@ public class BluetoothConnectionService {
 
     public void startClient(BluetoothDevice device, String uuid) {
         Log.d(TAG,"Client started");
-        //mProgressDialog = ProgressDialog.show(mContext,"Connecting Bluetooth","Please wait...",true);
         mClientThread = new ClientThread(device);
         mClientThread.start();
     }
 
     public void write(byte[] out) {
-        ConnectionThread r;
+        //ConnectionThread r;
         mConnectionThread.write(out);
     }
 }

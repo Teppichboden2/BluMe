@@ -16,9 +16,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Set;
 
-import activities.MeasureActivity;
-import bluetooth.BluetoothConnectionService;
-import activities.DeviceListAdapter;
+import com.example.blume.activities.MeasureActivity;
+import com.example.blume.bluetooth.BluetoothConnectionService;
+import com.example.blume.activities.DeviceListAdapter;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method is required for all devices running API23+
-     * Android must programmatically check the permissions for bluetooth. Putting the proper permissions
+     * Android must programmatically check the permissions for com.example.blume.bluetooth. Putting the proper permissions
      * in the manifest is not enough.
      *
      * NOTE: This will only execute on versions > LOLLIPOP because it is not needed otherwise.

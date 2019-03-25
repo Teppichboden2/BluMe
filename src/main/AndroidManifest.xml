@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activities.MeasureActivity"></activity>
+        <activity android:name=".activities.ServerActivity"></activity>
+        <activity android:name="com.example.blume.activities.MeasureActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
