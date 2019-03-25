@@ -11,27 +11,28 @@
     tools:context="activities.MeasureActivity">
 
     <Button
-        android:id="@+id/btnExit"
+        android:id="@+id/btnMeasure"
         android:layout_width="355dp"
         android:layout_height="178dp"
+        android:onClick="onMeasureButtonClicked"
         android:text="@string/btnMeasure"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155"
-        android:onClick="onMeasureButtonClicked" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvMeasure"
         android:layout_width="313dp"
         android:layout_height="105dp"
-        android:text="Stinke Vinke"
+        android:text="@string/tvMeasure"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.726" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMeasure"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

@@ -22,10 +22,11 @@ public class MeasureActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"MeasureActivity created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measure);
-        list = new long[listSize];
         mTextView = findViewById(R.id.tvMeasure);
+        list = new long[listSize];
     }
 
     public void onMeasureButtonClicked(View view) {
@@ -64,19 +65,3 @@ public class MeasureActivity extends AppCompatActivity {
         mTextView.setText("BPM: "+result);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

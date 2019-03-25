@@ -3,6 +3,7 @@
     <string name="btnExit">Exit</string>
     <string name="btnServer">Server</string>
     <string name="btnClient">Client</string>
-    <string name="btnMeasureActivity">Util</string>
+    <string name="btnMeasureActivity">Measure beat</string>
     <string name="btnMeasure">Tap to measure</string>
+    <string name="tvMeasure">Stinke Vinke</string>
 </resources>
