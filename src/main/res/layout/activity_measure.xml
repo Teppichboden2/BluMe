@@ -12,59 +12,48 @@
 
     <Button
         android:id="@+id/btnMeasure"
-        android:layout_width="355dp"
-        android:layout_height="178dp"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
         android:onClick="onMeasureButtonClicked"
         android:text="@string/btnMeasure"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <Button
+        android:id="@+id/btnBeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onBeatButtonClicked"
+        android:text="@string/btnBeatOff"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="77dp" />
+
 
     <TextView
         android:id="@+id/tvMeasure"
-        android:layout_width="313dp"
+        android:layout_width="316dp"
         android:layout_height="105dp"
         android:text="@string/tvMeasure"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMeasure"
-        app:layout_constraintVertical_bias="0.275" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="254dp" />
 
     <SeekBar
         android:id="@+id/sbMeasure"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="324dp"
         android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:max="8"
         android:progress="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.671"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnMeasure"
-        app:layout_constraintVertical_bias="0.75" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="450dp" />
 
     <TextView
         android:id="@+id/tvMeasureSlider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
         android:text="@string/tvMeasureSlider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMeasure" />
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="568dp" />
 
 </android.support.constraint.ConstraintLayout>

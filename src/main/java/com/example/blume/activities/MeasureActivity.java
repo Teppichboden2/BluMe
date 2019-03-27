@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -14,16 +15,21 @@ public class MeasureActivity extends AppCompatActivity {
 
     public static final String TAG = "MeasureActivity";
 
+    private final String start;
+    private final String stop;
+
     private final int maxListSize = 10;
     private int listSize = 5;
     private int index = 0;
     private long currentTime = 0;
     private long[] list;
     private boolean isFull = false;
+    private boolean isTicking = false;
 
     private TextView mTextView;
     private TextView mSeekBarTextView;
     private SeekBar mSeekBar;
+    private Button mBeatButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class MeasureActivity extends AppCompatActivity {
         mTextView = findViewById(R.id.tvMeasure);
         mSeekBar = findViewById(R.id.sbMeasure);
         mSeekBarTextView = findViewById(R.id.tvMeasureSlider);
+        mBeatButton = findViewById(R.id.btnBeat);
 
         listSize = mSeekBar.getProgress() + 2;
         list = new long[maxListSize];
@@ -68,6 +75,15 @@ public class MeasureActivity extends AppCompatActivity {
     public void onMeasureButtonClicked(View view) {
         measure();
         updateText();
+    }
+
+    public void onBeatButtonClicked(View view) {
+        if(isTicking) {
+            mBeatButton.setText(R.string.btnBeatOn);
+        } else {
+            mBeatButton.setText(R.string.btnBeatOff);
+        }
+        isTicking = !isTicking;
     }
 
     private void measure() {
