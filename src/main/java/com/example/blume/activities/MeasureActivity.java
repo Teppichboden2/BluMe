@@ -15,16 +15,13 @@ public class MeasureActivity extends AppCompatActivity {
 
     public static final String TAG = "MeasureActivity";
 
-    private final String start;
-    private final String stop;
-
     private final int maxListSize = 10;
-    private int listSize = 5;
-    private int index = 0;
-    private long currentTime = 0;
+    private int listSize;
+    private int index;
+    private long currentTime;
     private long[] list;
-    private boolean isFull = false;
-    private boolean isTicking = false;
+    private boolean isFull;
+    private boolean isTicking;
 
     private TextView mTextView;
     private TextView mSeekBarTextView;
@@ -39,6 +36,7 @@ public class MeasureActivity extends AppCompatActivity {
         setContentView(R.layout.activity_measure);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        reset();
         mTextView = findViewById(R.id.tvMeasure);
         mSeekBar = findViewById(R.id.sbMeasure);
         mSeekBarTextView = findViewById(R.id.tvMeasureSlider);
@@ -51,25 +49,18 @@ public class MeasureActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 listSize = progress + 2;
-                index = 0;
-                isFull = false;
-                currentTime = 0;
-                updateSeekBarTextView();
+                reset();
+                updateViewTexts();
                 Log.d(TAG,"New list size: "+listSize);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
+            public void onStartTrackingTouch(SeekBar seekBar) { }
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
-        updateSeekBarTextView();
+        updateViewTexts();
     }
 
     public void onMeasureButtonClicked(View view) {
@@ -78,12 +69,8 @@ public class MeasureActivity extends AppCompatActivity {
     }
 
     public void onBeatButtonClicked(View view) {
-        if(isTicking) {
-            mBeatButton.setText(R.string.btnBeatOn);
-        } else {
-            mBeatButton.setText(R.string.btnBeatOff);
-        }
         isTicking = !isTicking;
+        updateViewTexts();
     }
 
     private void measure() {
@@ -117,7 +104,19 @@ public class MeasureActivity extends AppCompatActivity {
         mTextView.setText("BPM: "+result);
     }
 
-    private void updateSeekBarTextView() {
+    private void updateViewTexts() {
         mSeekBarTextView.setText("Taps averaged: "+listSize);
+        if(isTicking) {
+            mBeatButton.setText(R.string.btnBeatOn);
+        } else {
+            mBeatButton.setText(R.string.btnBeatOff);
+        }
+    }
+
+    private void reset() {
+        index = 0;
+        isFull = false;
+        isTicking = false;
+        currentTime = 0;
     }
 }
