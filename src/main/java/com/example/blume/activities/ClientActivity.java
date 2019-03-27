@@ -3,6 +3,8 @@ package com.example.blume.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.blume.R;
+
 public class ClientActivity extends AppCompatActivity {
 
     @Override

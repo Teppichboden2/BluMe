@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Set;
 
+import com.example.blume.activities.ClientActivity;
 import com.example.blume.activities.MeasureActivity;
 import com.example.blume.activities.ServerActivity;
 import com.example.blume.bluetooth.BluetoothConnectionService;
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClientButtonClicked(View view) {
         Log.d(TAG,"On client button clicked");
-        tryToEnableBluetooth();
+        /*tryToEnableBluetooth();
 
         Set<BluetoothDevice> paired = mBluetoothAdapter.getBondedDevices();
 
@@ -160,7 +161,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"Address: "+mBluetoothDevice.getAddress());
         Log.d(TAG,"Trying to connect...");
 
-        this.startConnection();
+        this.startConnection();*/
+
+        Log.d(TAG,"On ServerButton clicked");
+        Intent intent = new Intent(this, ClientActivity.class);
+        startActivity(intent);
     }
 
     public void onMeasureActivityButtonClicked(View view) {

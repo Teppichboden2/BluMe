@@ -6,4 +6,5 @@
     <string name="btnMeasureActivity">Measure beat</string>
     <string name="btnMeasure">Tap to measure</string>
     <string name="tvMeasure">Stinke Vinke</string>
+    <string name="tvMeasureSlider" />
 </resources>
